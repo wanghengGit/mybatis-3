@@ -97,6 +97,8 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
  * @author Clinton Begin
+ * @author wangheng
+ * @date 2019/10/09
  */
 public class Configuration {
 
