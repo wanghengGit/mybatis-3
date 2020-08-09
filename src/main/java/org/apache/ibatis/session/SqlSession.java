@@ -15,6 +15,8 @@ import org.apache.ibatis.executor.BatchResult;
  * @author Clinton Begin
  * @author wangheng
  * @date 2019/10/14
+ * 面向用户的api
+ * executor组件的外观,外观模式
  */
 public interface SqlSession extends Closeable {
 

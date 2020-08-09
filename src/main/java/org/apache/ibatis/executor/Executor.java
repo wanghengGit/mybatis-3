@@ -29,6 +29,10 @@ import org.apache.ibatis.transaction.Transaction;
 
 /**
  * @author Clinton Begin
+ * @date 20200713
+ * sql执行器
+ * 工厂模式
+ * 模板方法
  */
 public interface Executor {
 

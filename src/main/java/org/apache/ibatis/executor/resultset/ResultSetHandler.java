@@ -24,6 +24,7 @@ import org.apache.ibatis.cursor.Cursor;
 
 /**
  * @author Clinton Begin
+ * @date 20200713
  */
 public interface ResultSetHandler {
 

@@ -27,6 +27,8 @@ import org.apache.ibatis.session.ResultHandler;
 
 /**
  * @author Clinton Begin
+ * @date 20200713
+ * 封装了对jdbc statement的操作
  */
 public interface StatementHandler {
 

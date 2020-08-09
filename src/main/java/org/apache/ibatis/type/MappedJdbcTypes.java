@@ -23,6 +23,7 @@ import java.lang.annotation.Target;
 
 /**
  * @author Eduardo Macarron
+ * @date 20200714
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

@@ -99,6 +99,7 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
  * @author Clinton Begin
  * @author wangheng
  * @date 2019/10/09
+ * 用于描述mybatis的主配置信息
  */
 public class Configuration {
 

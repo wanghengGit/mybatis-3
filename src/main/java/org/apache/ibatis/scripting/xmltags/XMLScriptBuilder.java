@@ -31,6 +31,7 @@ import org.w3c.dom.NodeList;
 
 /**
  * @author Clinton Begin
+ * @date 20200714
  */
 public class XMLScriptBuilder extends BaseBuilder {
 
@@ -151,7 +152,7 @@ public class XMLScriptBuilder extends BaseBuilder {
 
   private class SetHandler implements NodeHandler {
     public SetHandler() {
-      // Prevent Synthetic Access
+      // Prevent Synthetic A ccess
     }
 
     @Override

@@ -22,6 +22,7 @@ import org.apache.ibatis.mapping.MappedStatement;
 
 /**
  * @author Clinton Begin
+ * @date 20200714
  */
 public interface KeyGenerator {
 

@@ -30,6 +30,8 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Clinton Begin
+ * @date 20200713
+ * 用于描述mapper中的sql配置信息
  */
 public final class MappedStatement {
 

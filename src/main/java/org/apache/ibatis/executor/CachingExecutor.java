@@ -35,6 +35,8 @@ import org.apache.ibatis.transaction.Transaction;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
+ * @date 20200714
+ * 装饰器模式
  */
 public class CachingExecutor implements Executor {
 
