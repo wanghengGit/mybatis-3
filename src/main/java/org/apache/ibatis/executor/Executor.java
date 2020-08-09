@@ -1,17 +1,17 @@
 /**
- *    Copyright 2009-2015 the original author or authors.
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Copyright 2009-2015 the original author or authors.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.apache.ibatis.executor;
 
@@ -33,9 +33,18 @@ import org.apache.ibatis.transaction.Transaction;
  * sql执行器
  * 工厂模式
  * 模板方法
+ * MyBatis中Executor是核心，围绕着它完成了数据库操作的完整过程
  */
 public interface Executor {
-
+  /**
+   * Executor主要提供了
+   *
+   * QUERY|UPDATE(INSERT和DELETE也是使用UPDATE)，从方法定义中可看到，它需要MappedStatement、parameter、resultHandler这几个实例对象，这几个也是SQL执行的主要部分，详细实现在后面专题中再介绍。
+   * 事务提交/回滚，这委托给Transaction对象来完成。
+   * 缓存，createCacheKey()/isCached()。
+   * 延迟加载，deferload()。
+   * 关闭，close()，主要是事务回滚/关闭。
+   */
   ResultHandler NO_RESULT_HANDLER = null;
 
   int update(MappedStatement ms, Object parameter) throws SQLException;

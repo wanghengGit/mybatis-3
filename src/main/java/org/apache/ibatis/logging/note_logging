@@ -1,0 +1,7 @@
+
+
+    MyBatis使用了自己定义的一套logging接口，根据开发者常使用的日志框架——Log4j、Log4j2、Apache Commons Log、java.util.logging、slf4j、stdout(控制台)——分别提供了适配器。
+由于各日志框架的Log级别分类法有所不同(比如java.util.logging.Level提供的是All、FINEST、FINER、FINE、CONFIG、INFO、WARNING、SEVERE、OFF这九个级别，与通常的日志框架分类法不太一样)，
+MyBatis统一提供trace、debug、warn、error四个级别，这基本与主流框架分类法是一致的(相比而言缺少Info，也许MyBatis认为自己的日志要么是debug需要的，要么就至少是warn，没有Info的必要)。
+
+在org.apache.ibatis.logging里还有个比较特殊的包jdbc，这不是按字面意义理解把日志通过jdbc记录到数据库里，而是将jdbc操作以开发者配置的日志框架打印出来，这也就是我们在开发阶段常用的跟踪SQL语句、传入参数、影响行数这些重要的调试信息。

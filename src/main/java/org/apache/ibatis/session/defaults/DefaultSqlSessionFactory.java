@@ -33,6 +33,8 @@ import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20200809
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 

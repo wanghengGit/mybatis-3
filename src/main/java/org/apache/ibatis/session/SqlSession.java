@@ -17,6 +17,7 @@ import org.apache.ibatis.executor.BatchResult;
  * @date 2019/10/14
  * 面向用户的api
  * executor组件的外观,外观模式
+ * SqlSessionFactory、SqlSession这是MyBatis接口层的核心类，尤其是SqlSession，是实现所有数据库操作的API
  */
 public interface SqlSession extends Closeable {
 

@@ -51,6 +51,10 @@ import org.apache.ibatis.type.TypeHandler;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * @author wangheng
+ * @date 2019/10/09
+ * SqlMap.xml是在XMLMapperBuilder中解析完成的，其中把对Statement的解析(即SqlMap.xml中SELECT|INSERT|UPDATE|DELETE定义部分)委托给XMLStatementBuilder来完成。
+ * SqlMap.xml的解析比较复杂的，涉及到PreparedMapping、ResultMapping、LanguageDriver、Discriminator、缓存、自动映射等一系列对象的构造
  */
 public class XMLMapperBuilder extends BaseBuilder {
 
