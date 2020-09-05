@@ -20,6 +20,9 @@ import java.lang.reflect.Constructor;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20200905
+ * 单例模式
  */
 public final class LogFactory {
 

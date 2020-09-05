@@ -17,6 +17,9 @@ package org.apache.ibatis.logging;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20200905
+ * 适配器模式
  */
 public interface Log {
 
