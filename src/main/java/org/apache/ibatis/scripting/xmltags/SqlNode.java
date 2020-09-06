@@ -18,6 +18,8 @@ package org.apache.ibatis.scripting.xmltags;
 /**
  * @author Clinton Begin
  * @date 20200714
+ * @author kit
+ * 组合模式
  */
 public interface SqlNode {
   boolean apply(DynamicContext context);

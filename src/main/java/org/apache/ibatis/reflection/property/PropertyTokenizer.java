@@ -19,6 +19,9 @@ import java.util.Iterator;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20200906
+ * 迭代器模式
  */
 public class PropertyTokenizer implements Iterator<PropertyTokenizer> {
   private String name;

@@ -37,6 +37,9 @@ import java.util.concurrent.locks.ReadWriteLock;
  * </pre>
  *
  * @author Clinton Begin
+ * @author kit
+ * @date 20200906
+ * 装饰者模式
  */
 
 public interface Cache {

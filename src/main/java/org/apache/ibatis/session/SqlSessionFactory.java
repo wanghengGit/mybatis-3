@@ -22,6 +22,8 @@ import java.sql.Connection;
  *
  * @author Clinton Begin
  * @date 20200713
+ * @author kit
+ * 简单工厂模式
  */
 public interface SqlSessionFactory {
 

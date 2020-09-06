@@ -30,6 +30,8 @@ import org.apache.ibatis.session.defaults.DefaultSqlSessionFactory;
  *
  * @author Clinton Begin
  * @date 20200713
+ * @author kit
+ * Builder模式
  */
 public class SqlSessionFactoryBuilder {
 
