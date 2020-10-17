@@ -24,11 +24,14 @@ import org.apache.ibatis.cache.Cache;
  * Lru (least recently used) cache decorator.
  *
  * @author Clinton Begin
+ * @date 20200411
  */
 public class LruCache implements Cache {
-
+  //被装饰的底层cache对象
   private final Cache delegate;
+  // LinkedHashMap 用于记录key最近的使用情况
   private Map<Object, Object> keyMap;
+  // 记录最少被使用的缓存项的key
   private Object eldestKey;
 
   public LruCache(Cache delegate) {

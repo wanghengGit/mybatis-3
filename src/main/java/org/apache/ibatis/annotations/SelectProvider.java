@@ -23,6 +23,8 @@ import java.lang.annotation.Target;
 
 /**
  * @author Clinton Begin
+ * @date 20200403
+ * @author kit
  */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)

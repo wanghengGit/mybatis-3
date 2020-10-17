@@ -33,6 +33,7 @@ import org.apache.ibatis.transaction.Transaction;
 
 /**
  * @author Clinton Begin
+ * @date 20200403
  */
 public class SimpleExecutor extends BaseExecutor {
 
@@ -60,6 +61,7 @@ public class SimpleExecutor extends BaseExecutor {
       Configuration configuration = ms.getConfiguration();
       StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);
       stmt = prepareStatement(handler, ms.getStatementLog());
+      //StatementHandler封装了Statement, 让 StatementHandler 去处理
       return handler.query(stmt, resultHandler);
     } finally {
       closeStatement(stmt);

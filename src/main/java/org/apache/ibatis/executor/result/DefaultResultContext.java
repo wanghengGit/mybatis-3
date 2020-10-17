@@ -19,6 +19,8 @@ import org.apache.ibatis.session.ResultContext;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20200819
  */
 public class DefaultResultContext<T> implements ResultContext<T> {
 

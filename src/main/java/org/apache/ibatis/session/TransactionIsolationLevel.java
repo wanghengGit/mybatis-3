@@ -19,6 +19,9 @@ import java.sql.Connection;
 
 /**
  * @author Clinton Begin
+ * @date 20200410
+ * @author kit
+ * 事务隔离级别
  */
 public enum TransactionIsolationLevel {
   NONE(Connection.TRANSACTION_NONE),

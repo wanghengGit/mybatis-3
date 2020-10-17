@@ -8,8 +8,8 @@ import java.sql.SQLException;
  * Handles the connection lifecycle that comprises: its creation, preparation, commit/rollback and close.
  *
  * @author Clinton Begin
- * @author wangheng
  * @date 2019/10/09
+ * @author kit
  */
 public interface Transaction {
 

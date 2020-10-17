@@ -17,6 +17,8 @@ package org.apache.ibatis.session;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20200819
  */
 public enum ExecutorType {
   SIMPLE, REUSE, BATCH

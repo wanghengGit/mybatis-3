@@ -19,6 +19,8 @@ import org.apache.ibatis.exceptions.PersistenceException;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 2020819
  */
 public class TransactionException extends PersistenceException {
 

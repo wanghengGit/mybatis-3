@@ -51,6 +51,8 @@ import org.apache.ibatis.type.TypeHandler;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * @author wangheng
+ * @date 2019/10/14
  */
 public class XMLMapperBuilder extends BaseBuilder {
 
@@ -115,6 +117,9 @@ public class XMLMapperBuilder extends BaseBuilder {
       cacheRefElement(context.evalNode("cache-ref"));
       cacheElement(context.evalNode("cache"));
       parameterMapElement(context.evalNodes("/mapper/parameterMap"));
+      //处理<resultMap>这类标签，然后再MapperBuilderAssistant类的addResultMap()方法中
+      // 把每个ResultMap对象加到Configuration对象中的resultMaps属性中（中间会把<resultMap>标签中的每一个子标签封装成ResultMapping对象，
+      // 然后封装成ResultMap对象，最后put到Configuration对象中，id规则为：namespace+<resultMap>的id属性 ）
       resultMapElements(context.evalNodes("/mapper/resultMap"));
       sqlElement(context.evalNodes("/mapper/sql"));
       buildStatementFromContext(context.evalNodes("select|insert|update|delete"));

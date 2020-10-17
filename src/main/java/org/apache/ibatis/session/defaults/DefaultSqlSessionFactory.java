@@ -33,6 +33,8 @@ import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
 
 /**
  * @author Clinton Begin
+ * @date 20200410
+ * （2）当我们获取到SqlSessionFactory之后，就可以通过SqlSessionFactory去获取SqlSession对象
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
@@ -90,10 +92,13 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
   private SqlSession openSessionFromDataSource(ExecutorType execType, TransactionIsolationLevel level, boolean autoCommit) {
     Transaction tx = null;
     try {
+      //通过Confuguration对象去获取Mybatis相关配置信息, Environment对象包含了数据源和事务的配置
       final Environment environment = configuration.getEnvironment();
       final TransactionFactory transactionFactory = getTransactionFactoryFromEnvironment(environment);
       tx = transactionFactory.newTransaction(environment.getDataSource(), level, autoCommit);
+      //之前说了，从表面上来看，咱们是用sqlSession在执行sql语句， 实际呢，其实是通过excutor执行， excutor是对于Statement的封装
       final Executor executor = configuration.newExecutor(tx, execType);
+      //关键看这儿，创建了一个DefaultSqlSession对象
       return new DefaultSqlSession(configuration, executor, autoCommit);
     } catch (Exception e) {
       closeTransaction(tx); // may have fetched a connection so lets call close()

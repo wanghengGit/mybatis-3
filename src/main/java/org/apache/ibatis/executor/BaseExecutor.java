@@ -46,6 +46,8 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20200819
  */
 public abstract class BaseExecutor implements Executor {
 

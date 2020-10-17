@@ -19,6 +19,8 @@ import org.apache.ibatis.exceptions.PersistenceException;
 
 /**
  * @author Clinton Begin
+ * @date 20200819
+ * @author kit
  */
 public class LogException extends PersistenceException {
 

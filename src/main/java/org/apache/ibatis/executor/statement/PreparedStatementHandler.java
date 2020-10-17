@@ -34,6 +34,8 @@ import org.apache.ibatis.session.RowBounds;
 
 /**
  * @author Clinton Begin
+ * @date 20200410
+ * 这也是我们最常用的，封装的是PreparedStatement
  */
 public class PreparedStatementHandler extends BaseStatementHandler {
 
@@ -67,8 +69,10 @@ public class PreparedStatementHandler extends BaseStatementHandler {
 
   @Override
   public <E> Cursor<E> queryCursor(Statement statement) throws SQLException {
+    //到此，原形毕露， PreparedStatement, 这个大家都已经滚瓜烂熟了吧
     PreparedStatement ps = (PreparedStatement) statement;
     ps.execute();
+    //结果交给了ResultSetHandler 去处理
     return resultSetHandler.handleCursorResultSets(ps);
   }
 

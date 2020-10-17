@@ -303,10 +303,12 @@ public class XNode {
 
   public Properties getChildrenAsProperties() {
     Properties properties = new Properties();
+    //获取并遍历子节点
     for (XNode child : getChildren()) {
       String name = child.getStringAttribute("name");
       String value = child.getStringAttribute("value");
       if (name != null && value != null) {
+        //设置属性到属性对象中
         properties.setProperty(name, value);
       }
     }

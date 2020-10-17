@@ -29,6 +29,10 @@ import org.apache.ibatis.session.SqlSession;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
+ * @date 20200410
+ * 在mybatis中，通过MapperProxy动态代理咱们的dao， 也就是说，
+ * 当咱们执行自己写的dao里面的方法的时候，其实是对应的mapperProxy在代理。
+ * 那么，咱们就看看怎么获取MapperProxy对象吧
  */
 public class MapperProxy<T> implements InvocationHandler, Serializable {
 
@@ -60,6 +64,14 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     lookupConstructor.setAccessible(true);
   }
 
+  /**
+   * TODO MapperProxy在执行时会触发此方法
+   * @param proxy
+   * @param method
+   * @param args
+   * @return
+   * @throws Throwable
+   */
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     try {
@@ -72,6 +84,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
       throw ExceptionUtil.unwrapThrowable(t);
     }
     final MapperMethod mapperMethod = cachedMapperMethod(method);
+    //主要交给MapperMethod自己去管
     return mapperMethod.execute(sqlSession, args);
   }
 

@@ -44,6 +44,8 @@ import org.apache.ibatis.session.SqlSession;
  * Note that this class is not Thread-Safe.
  *
  * @author Clinton Begin
+ * @author kit
+ * @date 2020819
  */
 public class DefaultSqlSession implements SqlSession {
 
@@ -144,6 +146,7 @@ public class DefaultSqlSession implements SqlSession {
   public <E> List<E> selectList(String statement, Object parameter, RowBounds rowBounds) {
     try {
       MappedStatement ms = configuration.getMappedStatement(statement);
+      //CRUD实际上是交给Excetor去处理， excutor其实也只是穿了个马甲而已
       return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);
     } catch (Exception e) {
       throw ExceptionFactory.wrapException("Error querying database.  Cause: " + e, e);
@@ -285,7 +288,9 @@ public class DefaultSqlSession implements SqlSession {
   public Configuration getConfiguration() {
     return configuration;
   }
-
+  /**
+   * 什么都不做，直接去configuration中找
+   */
   @Override
   public <T> T getMapper(Class<T> type) {
     return configuration.getMapper(type, this);

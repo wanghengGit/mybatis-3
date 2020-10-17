@@ -43,6 +43,7 @@ import org.apache.ibatis.session.SqlSession;
  * @author Eduardo Macarron
  * @author Lasse Voss
  * @author Kazuki Shimizu
+ * @date 20200410
  */
 public class MapperMethod {
 

@@ -13,8 +13,10 @@ import org.apache.ibatis.executor.BatchResult;
  * Through this interface you can execute commands, get mappers and manage transactions.
  *
  * @author Clinton Begin
- * @author wangheng
+ * @author kit
  * @date 2019/10/14
+ * 从表面上来看，咱们都是通过SqlSession去执行sql语句（注意：是从表面看，实际的待会儿就会讲）
+ * 通过这个接口可以执行执行SQL语句、获取Mappers、管理事务。类似于连接MySQL的Connection对象。
  */
 public interface SqlSession extends Closeable {
 

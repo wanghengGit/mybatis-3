@@ -20,6 +20,12 @@ import javax.sql.DataSource;
 
 /**
  * @author Clinton Begin
+ * @date 20200411
+ * 工厂方法模式
+ * 工厂接口（Factory）：DataSourceFactory扮演工厂接口角色
+ * 具体工厂类（ConcreteFactory）：UnpooledDataSourceFactory和PooledDataSourceFactory
+ * 产品接口角色（Product）：java.sql.DataSource
+ * 具体产品类角色（ConcreteFactory）：UnpooledDataSource和PooledDataSource
  */
 public interface DataSourceFactory {
 

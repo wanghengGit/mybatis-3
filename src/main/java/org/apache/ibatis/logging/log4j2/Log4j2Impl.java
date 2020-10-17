@@ -22,6 +22,8 @@ import org.apache.logging.log4j.spi.AbstractLogger;
 
 /**
  * @author Eduardo Macarron
+ * @date 20200411
+ * 对于Log4jImpl的实现来说，该实现持有了org.apache.log4j.Logger的实例，然后所有的日志方法，均委托该实例来实现
  */
 public class Log4j2Impl implements Log {
 

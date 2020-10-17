@@ -40,6 +40,8 @@ import org.apache.ibatis.type.TypeHandler;
 /**
  * @author Clinton Begin
  * @author Adam Gent
+ * @author kit
+ * @date 20200819
  */
 public enum Null {
   BOOLEAN(new BooleanTypeHandler(), JdbcType.BOOLEAN),

@@ -19,6 +19,8 @@ import org.apache.ibatis.executor.ErrorContext;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20200819
  */
 public class ExceptionFactory {
 

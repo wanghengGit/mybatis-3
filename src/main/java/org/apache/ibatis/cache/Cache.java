@@ -37,6 +37,10 @@ import java.util.concurrent.locks.ReadWriteLock;
  * </pre>
  *
  * @author Clinton Begin
+ * @date 20200411
+ * 装饰器模式
+ * Cache接口的实现有多个，但是大部分都是装饰器，只有PerpetualCache提供了Cache接口的基本实现，
+ * 其他的装饰器都是在PerpetualCache的基础上提供了一些额外的功能，通过各种组合后满足一个特定的需求
  */
 
 public interface Cache {

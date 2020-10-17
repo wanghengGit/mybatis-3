@@ -36,6 +36,10 @@ import org.apache.ibatis.reflection.SystemMetaObject;
 
 /**
  * @author Clinton Begin
+ * @date 20200403
+ * 构造者模式
+ * 在mybatis初始化mapper映射文件的过程中，为<cache>节点创建Cache对象的方式就是构造者模式。
+ * 其中CacheBilder为建造者角色，Cache对象是产品角色
  */
 public class CacheBuilder {
   private final String id;
@@ -52,6 +56,10 @@ public class CacheBuilder {
     this.decorators = new ArrayList<>();
   }
 
+  /**
+   * 以下这几个方法就是构造者在生成产品对象时，需要使用到的几个具体模块方法。
+   * 可以根据这几个方法的不同组合，生成不同的Cache对象
+   */
   public CacheBuilder implementation(Class<? extends Cache> implementation) {
     this.implementation = implementation;
     return this;
@@ -89,6 +97,10 @@ public class CacheBuilder {
     return this;
   }
 
+  /**
+   * 这个方法就是构造者生成产品的具体方法 返回的Cahce对象就是产品角色
+   * @return
+   */
   public Cache build() {
     setDefaultImplementations();
     Cache cache = newBaseCacheInstance(implementation, id);

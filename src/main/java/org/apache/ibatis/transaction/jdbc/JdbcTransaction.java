@@ -17,9 +17,9 @@ import org.apache.ibatis.transaction.TransactionException;
  * Ignores commit or rollback requests when autocommit is on.
  *
  * @author Clinton Begin
- * @author wangheng
  * @date 2019/10/09
  * @see JdbcTransactionFactory
+ * @date 2020819
  */
 public class JdbcTransaction implements Transaction {
 

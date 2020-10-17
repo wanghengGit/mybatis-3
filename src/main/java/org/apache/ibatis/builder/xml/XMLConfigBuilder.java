@@ -1,18 +1,3 @@
-/**
- *    Copyright 2009-2019 the original author or authors.
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
- */
 package org.apache.ibatis.builder.xml;
 
 import java.io.InputStream;
@@ -49,6 +34,8 @@ import org.apache.ibatis.type.JdbcType;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * @author wangheng
+ * @date 2019/10/14
  */
 public class XMLConfigBuilder extends BaseBuilder {
 
@@ -95,6 +82,7 @@ public class XMLConfigBuilder extends BaseBuilder {
       throw new BuilderException("Each XMLConfigBuilder can only be used once.");
     }
     parsed = true;
+    //解析配置
     parseConfiguration(parser.evalNode("/configuration"));
     return configuration;
   }
@@ -102,8 +90,11 @@ public class XMLConfigBuilder extends BaseBuilder {
   private void parseConfiguration(XNode root) {
     try {
       //issue #117 read properties first
+      //解析properties配置
       propertiesElement(root.evalNode("properties"));
+      //解析settings配置，并将其转换为Properties对象
       Properties settings = settingsAsProperties(root.evalNode("settings"));
+      //加载vfs
       loadCustomVfs(settings);
       loadCustomLogImpl(settings);
       typeAliasesElement(root.evalNode("typeAliases"));

@@ -25,6 +25,8 @@ import java.util.List;
  * @author Jeff Butler
  * @author Adam Gent
  * @author Kazuki Shimizu
+ * @author kit
+ * @date 20200819
  */
 public abstract class AbstractSQL<T> {
 
