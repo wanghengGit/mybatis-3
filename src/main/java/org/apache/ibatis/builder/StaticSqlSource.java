@@ -24,6 +24,9 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201029
+ * 用于描述ProviderSqlSource
  */
 public class StaticSqlSource implements SqlSource {
 

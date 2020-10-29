@@ -28,6 +28,9 @@ import org.apache.ibatis.session.Configuration;
  *
  * @since 3.2.0
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20201029
+ * 仅支持静态SQL配置
  */
 public class RawLanguageDriver extends XMLLanguageDriver {
 

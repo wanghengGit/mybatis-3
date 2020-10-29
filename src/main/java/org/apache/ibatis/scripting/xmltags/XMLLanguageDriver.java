@@ -30,6 +30,9 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20201029
+ * XML语言驱动，为MyBatis提供了通过XML标签结合OGNL表达式语法实现动态SQL的功能
  */
 public class XMLLanguageDriver implements LanguageDriver {
 
@@ -38,12 +41,27 @@ public class XMLLanguageDriver implements LanguageDriver {
     return new DefaultParameterHandler(mappedStatement, parameterObject, boundSql);
   }
 
+  /**
+   * 用于处理XML文件中配置的SQL信息
+   * @param configuration The MyBatis configuration
+   * @param script XNode parsed from a XML file
+   * @param parameterType input parameter type got from a mapper method or specified in the parameterType xml attribute. Can be null.
+   * @return
+   */
   @Override
   public SqlSource createSqlSource(Configuration configuration, XNode script, Class<?> parameterType) {
     XMLScriptBuilder builder = new XMLScriptBuilder(configuration, script, parameterType);
+    //解析SQL资源
     return builder.parseScriptNode();
   }
 
+  /**
+   * 用于处理java注解中配置的SQL信息
+   * @param configuration The MyBatis configuration
+   * @param script The content of the annotation
+   * @param parameterType input parameter type got from a mapper method or specified in the parameterType xml attribute. Can be null.
+   * @return
+   */
   @Override
   public SqlSource createSqlSource(Configuration configuration, String script, Class<?> parameterType) {
     // issue #3

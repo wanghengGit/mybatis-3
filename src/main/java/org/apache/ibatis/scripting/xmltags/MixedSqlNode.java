@@ -19,6 +19,8 @@ import java.util.List;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201029
  */
 public class MixedSqlNode implements SqlNode {
   private final List<SqlNode> contents;

@@ -21,6 +21,8 @@ package org.apache.ibatis.mapping;
  *
  * @author Clinton Begin
  * @date 20200403
+ * @author kit
+ * 用于描述通过XML文件或者java注解配置的sql资源信息
  */
 public interface SqlSource {
 

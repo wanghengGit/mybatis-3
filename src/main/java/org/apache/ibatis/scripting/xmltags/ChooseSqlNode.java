@@ -19,6 +19,8 @@ import java.util.List;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201029
  */
 public class ChooseSqlNode implements SqlNode {
   private final SqlNode defaultSqlNode;

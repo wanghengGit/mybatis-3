@@ -22,6 +22,9 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201029
+ * 用于描述Mapper XML文件中配置的SQL资源信息
  */
 public class DynamicSqlSource implements SqlSource {
 

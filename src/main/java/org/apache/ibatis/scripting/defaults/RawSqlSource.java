@@ -31,6 +31,9 @@ import org.apache.ibatis.session.Configuration;
  *
  * @since 3.2.0
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20201029
+ * 用于描述Mapper XML文件中配置的SQL资源信息
  */
 public class RawSqlSource implements SqlSource {
 

@@ -32,6 +32,7 @@ import org.apache.ibatis.session.Configuration;
  * Can also have additional parameters that are created by the dynamic language (for loops, bind...).
  *
  * @author Clinton Begin
+ * @author kit
  * @date 20200403
  * 表示动态生成的SQL语句以及相应的参数信息
  */

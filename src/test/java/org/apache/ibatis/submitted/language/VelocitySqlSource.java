@@ -32,6 +32,8 @@ import org.apache.velocity.runtime.parser.node.SimpleNode;
 
 /**
  * Just a test case. Not a real Velocity implementation.
+ * @author kit
+ * @date 20201029
  */
 public class VelocitySqlSource implements SqlSource {
 

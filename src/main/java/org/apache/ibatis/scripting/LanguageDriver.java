@@ -23,6 +23,11 @@ import org.apache.ibatis.parsing.XNode;
 import org.apache.ibatis.scripting.defaults.DefaultParameterHandler;
 import org.apache.ibatis.session.Configuration;
 
+/**
+ * @author kit
+ * @date 20201029
+ * SQL配置信息到SqlSource对象的转换
+ */
 public interface LanguageDriver {
 
   /**
