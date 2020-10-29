@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /**
  * Copyright 2009-2015 the original author or authors.
  * <p>
@@ -15,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
 package org.apache.ibatis.executor;
 
 import java.sql.SQLException;
@@ -32,17 +29,13 @@ import org.apache.ibatis.transaction.Transaction;
 
 /**
  * @author Clinton Begin
-<<<<<<< HEAD
  * @date 2019/10/14
  * Executor对象在创建Configuration对象的时候创建，并且缓存在Configuration对象里。
  * Executor对象的主要功能是调用StatementHandler访问数据库，并将查询结果存入缓存中（如果配置了缓存的话）
-=======
- * @date 20200713
  * sql执行器
  * 工厂模式
  * 模板方法
  * MyBatis中Executor是核心，围绕着它完成了数据库操作的完整过程
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  */
 public interface Executor {
   /**
