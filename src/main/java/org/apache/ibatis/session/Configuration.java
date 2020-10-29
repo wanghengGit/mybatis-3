@@ -84,6 +84,9 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
  * @author Clinton Begin
  * @date 2019/10/09
  * @author kit
+ * 用于描述mybatis的主配置信息
+ * Configuration是MyBatis中相当重要的一个类，
+ * 如果理解了其中的所有参数的意义，不仅清楚地知道MyBatis提供的所有配置项，还理解了MyBatis的内部核心运行原理
  */
 public class Configuration {
 

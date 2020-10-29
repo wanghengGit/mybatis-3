@@ -42,6 +42,8 @@ import org.xml.sax.SAXParseException;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * @author kit
+ * @date 20200905
  */
 public class XPathParser {
 

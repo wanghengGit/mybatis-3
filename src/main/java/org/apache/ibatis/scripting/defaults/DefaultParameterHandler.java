@@ -35,6 +35,7 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
+ * @date 20200714
  */
 public class DefaultParameterHandler implements ParameterHandler {
 

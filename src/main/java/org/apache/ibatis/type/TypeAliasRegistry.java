@@ -34,6 +34,7 @@ import org.apache.ibatis.io.Resources;
 
 /**
  * @author Clinton Begin
+ * @date 20200714
  */
 public class TypeAliasRegistry {
 

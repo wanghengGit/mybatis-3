@@ -35,6 +35,8 @@ import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
  * @author Clinton Begin
  * @date 20200410
  * （2）当我们获取到SqlSessionFactory之后，就可以通过SqlSessionFactory去获取SqlSession对象
+ * @author kit
+ * @date 20200809
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 

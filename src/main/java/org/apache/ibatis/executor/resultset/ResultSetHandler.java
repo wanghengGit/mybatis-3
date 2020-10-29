@@ -9,8 +9,12 @@ import org.apache.ibatis.cursor.Cursor;
 
 /**
  * @author Clinton Begin
+<<<<<<< HEAD
  * @author wangheng
  * @date 2019/10/14
+=======
+ * @date 20200713
+>>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  */
 public interface ResultSetHandler {
 

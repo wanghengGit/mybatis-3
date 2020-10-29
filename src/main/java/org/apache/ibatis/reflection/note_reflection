@@ -1,0 +1,5 @@
+
+
+    在MyBatis如参数处理、结果映射这些大量地使用了反射，需要频繁地读取Class元数据、反射调用get/set，
+因此MyBatis提供了org.apache.ibatis.reflection对常见的反射操作进一步封装，以提供更简洁方便的API。
+比如我们reflect时总是要处理异常(IllegalAccessException、NoSuchMethodException)，MyBatis统一处理为自定义的RuntimeException，减少代码量。

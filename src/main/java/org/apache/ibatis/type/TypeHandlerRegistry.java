@@ -50,6 +50,7 @@ import org.apache.ibatis.io.Resources;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * @date 20200714
  */
 public final class TypeHandlerRegistry {
 

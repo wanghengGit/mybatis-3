@@ -22,6 +22,7 @@ import java.sql.SQLException;
 
 /**
  * @author Clinton Begin
+ * @date 20200713
  */
 public interface TypeHandler<T> {
 

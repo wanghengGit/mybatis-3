@@ -17,6 +17,9 @@ import org.apache.ibatis.executor.BatchResult;
  * @date 2019/10/14
  * 从表面上来看，咱们都是通过SqlSession去执行sql语句（注意：是从表面看，实际的待会儿就会讲）
  * 通过这个接口可以执行执行SQL语句、获取Mappers、管理事务。类似于连接MySQL的Connection对象。
+ * 面向用户的api
+ * executor组件的外观,外观模式
+ * SqlSessionFactory、SqlSession这是MyBatis接口层的核心类，尤其是SqlSession，是实现所有数据库操作的API
  */
 public interface SqlSession extends Closeable {
 

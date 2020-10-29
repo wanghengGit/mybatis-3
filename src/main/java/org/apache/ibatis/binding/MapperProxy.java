@@ -29,10 +29,16 @@ import org.apache.ibatis.session.SqlSession;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
+<<<<<<< HEAD
  * @date 20200410
  * 在mybatis中，通过MapperProxy动态代理咱们的dao， 也就是说，
  * 当咱们执行自己写的dao里面的方法的时候，其实是对应的mapperProxy在代理。
  * 那么，咱们就看看怎么获取MapperProxy对象吧
+=======
+ * @author kit
+ * @date 20200905
+ * 代理模式，Mybatis实现的核心，比如MapperProxy、ConnectionLogger，用的jdk的动态代理
+>>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  */
 public class MapperProxy<T> implements InvocationHandler, Serializable {
 

@@ -1,0 +1,6 @@
+
+
+    在以Spring为代表的开源框架中，对于应用程序中无法进一步处理的异常大都转成RuntimeException来方便调用者操作，
+另外如频繁遇到的SQLException，JDK约定其是个Exception，从JDK的角度考虑，强制要求开发者捕获SQLException是为了能在catch/finally中关闭数据库连接，
+而Spring之类的框架为开发者做了资源管理的事情，自然就不需要开发者再烦心SQLException，因此封装转换成RuntimeException。MyBatis的异常体系不复杂，
+org.apache.ibatis.exceptions下就几个类，主要被使用的是PersistenceException。

@@ -161,7 +161,7 @@ public class XMLScriptBuilder extends BaseBuilder {
 
   private class SetHandler implements NodeHandler {
     public SetHandler() {
-      // Prevent Synthetic Access
+      // Prevent Synthetic A ccess
     }
 
     @Override

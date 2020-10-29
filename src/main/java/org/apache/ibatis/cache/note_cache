@@ -1,0 +1,6 @@
+
+缓存是MyBatis里比较重要的部分，有两种缓存：
+
+1.SESSION或STATEMENT作用域级别的缓存，默认是SESSION，BaseExecutor中根据MappedStatement的Id、SQL、参数值以及rowBound(边界)来构造CacheKey，
+并使用BaseExccutor中的localCache来维护此缓存。
+2.全局的二级缓存，通过CacheExecutor来实现，其委托TransactionalCacheManager来保存/获取缓存，这个全局二级缓存比较复杂。
