@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /**
  * Copyright 2009-2019 the original author or authors.
  * <p>
@@ -15,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
 package org.apache.ibatis.builder;
 
 import java.util.Arrays;
@@ -33,13 +30,8 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
  * @author Clinton Begin
-<<<<<<< HEAD
- * @author wangheng
- * @date 2019/10/14
-=======
  * @author kit
  * @date 20200809
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  */
 public abstract class BaseBuilder {
   protected final Configuration configuration;

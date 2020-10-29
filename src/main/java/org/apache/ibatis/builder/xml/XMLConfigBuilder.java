@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 /**
  * Copyright 2009-2019 the original author or authors.
  * <p>
@@ -15,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
 package org.apache.ibatis.builder.xml;
 
 import java.io.InputStream;
@@ -52,14 +49,9 @@ import org.apache.ibatis.type.JdbcType;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
-<<<<<<< HEAD
- * @author wangheng
- * @date 2019/10/14
-=======
  * SqlMapConfig.xml是在XMLConfigBuilder类中完成解析的
  * @author kit
  * @date 20200809
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  */
 public class XMLConfigBuilder extends BaseBuilder {
 
