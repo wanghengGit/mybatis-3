@@ -23,6 +23,8 @@ import java.util.Set;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201029
  */
 public class SimpleTypeRegistry {
 

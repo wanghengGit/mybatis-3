@@ -20,13 +20,19 @@ import java.lang.reflect.Constructor;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
-<<<<<<< HEAD
- * @date 20200411
-=======
  * @author kit
  * @date 20200905
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  * 单例模式
+ *
+ *  LogFactory在加载时，有一个静态代码块，会依次去加载各种日志产品的实现，请其中的顺序是 SLF4J > Apache Commons Logging > Log4j 2 > Log4j > JDK logging。
+ *
+ * 　　以SLF4J为例说明(其余类似)：
+ *
+ * 执行tryImplementation方法：如果构造器logConstructor（LogFactory中的私有变量）不为空，启动一个线程去执行其中的run 方法。
+ * 具体是去执行useSlf4jLogging方法中的setImplementation方法，该方法会传入SLF4J的日志实现类的class对象：class org.apache.ibatis.logging.slf4j.Slf4jImpl。
+ * 试图去实例化一个实现类的日志对象，由于此时并未加入slf4j相关jar包依赖，所以会抛一个异常出去。
+ * 在默认情况下，即是用户未指定得情况下，class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl也就是Apache Commons Logging会默认实例化成功，
+ * spring默认使用此日志实现，由于存在该实现依赖，所以会被实例化成功，并返回其构造器。SqlSessionFactoryBean中调用的getLog方法实际是返回了一个基于JCL实现的日志对象。
  */
 public final class LogFactory {
 
@@ -36,7 +42,7 @@ public final class LogFactory {
   public static final String MARKER = "MYBATIS";
 
   private static Constructor<? extends Log> logConstructor;
-
+  //1.启动线程 2。加载日志类，返回构造器
   static {
     tryImplementation(LogFactory::useSlf4jLogging);
     tryImplementation(LogFactory::useCommonsLogging);
@@ -104,6 +110,10 @@ public final class LogFactory {
     }
   }
 
+  /**
+   * //3. 试图去实例化一个实现类的日志对象
+   * @param implClass
+   */
   private static void setImplementation(Class<? extends Log> implClass) {
     try {
       Constructor<? extends Log> candidate = implClass.getConstructor(String.class);
