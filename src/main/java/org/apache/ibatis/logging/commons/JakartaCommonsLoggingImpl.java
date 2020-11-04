@@ -20,6 +20,8 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201104
  */
 public class JakartaCommonsLoggingImpl implements org.apache.ibatis.logging.Log {
 

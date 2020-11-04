@@ -29,7 +29,8 @@ import org.apache.ibatis.reflection.ExceptionUtil;
  *
  * @author Clinton Begin
  * @author Eduardo Macarron
- *
+ * @author kit
+ * @date 20201104
  */
 public final class StatementLogger extends BaseJdbcLogger implements InvocationHandler {
 

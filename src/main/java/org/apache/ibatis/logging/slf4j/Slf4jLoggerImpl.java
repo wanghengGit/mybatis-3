@@ -20,6 +20,8 @@ import org.slf4j.Logger;
 
 /**
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20201104
  */
 class Slf4jLoggerImpl implements Log {
 

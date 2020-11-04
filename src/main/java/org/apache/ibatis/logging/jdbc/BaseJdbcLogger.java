@@ -37,6 +37,8 @@ import org.apache.ibatis.reflection.ArrayUtil;
  *
  * @author Clinton Begin
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20201104
  */
 public abstract class BaseJdbcLogger {
 

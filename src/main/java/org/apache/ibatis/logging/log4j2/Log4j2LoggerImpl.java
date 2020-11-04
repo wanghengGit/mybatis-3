@@ -23,6 +23,8 @@ import org.apache.logging.log4j.MarkerManager;
 
 /**
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20201104
  */
 public class Log4j2LoggerImpl implements Log {
 

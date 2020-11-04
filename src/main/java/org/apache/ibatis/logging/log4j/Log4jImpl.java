@@ -21,6 +21,8 @@ import org.apache.log4j.Logger;
 
 /**
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20201104
  */
 public class Log4jImpl implements Log {
 

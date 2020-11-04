@@ -23,6 +23,8 @@ import org.slf4j.spi.LocationAwareLogger;
 
 /**
  * @author Eduardo Macarron
+ * @author kit
+ * @date 20201104
  */
 class Slf4jLocationAwareLoggerImpl implements Log {
 
