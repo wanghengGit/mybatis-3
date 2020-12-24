@@ -16,6 +16,8 @@ import org.apache.ibatis.session.SqlSession;
  * @author Eduardo Macarron
  * @author Lasse Voss
  * @date 2019/10/14
+ * @author kit
+ * @date 20201124
  */
 public class MapperRegistry {
 

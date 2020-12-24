@@ -17,12 +17,8 @@ package org.apache.ibatis.executor;
 
 /**
  * @author Clinton Begin
-<<<<<<< HEAD
- * @date 20200411
-=======
  * @author kit
  * @date 20200905
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  * 单例模式
  */
 public class ErrorContext {

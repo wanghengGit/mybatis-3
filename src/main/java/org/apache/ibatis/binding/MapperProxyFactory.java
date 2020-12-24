@@ -25,6 +25,9 @@ import org.apache.ibatis.session.SqlSession;
 /**
  * @author Lasse Voss
  * @date 20200410
+ * @author kit
+ * @date 20201124
+ * 工厂模式
  */
 public class MapperProxyFactory<T> {
 

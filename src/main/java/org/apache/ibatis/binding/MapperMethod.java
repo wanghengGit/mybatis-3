@@ -43,6 +43,7 @@ import org.apache.ibatis.session.SqlSession;
  * @author Eduardo Macarron
  * @author Lasse Voss
  * @author Kazuki Shimizu
+ * @author kit
  * @date 20200410
  */
 public class MapperMethod {
@@ -60,7 +61,7 @@ public class MapperMethod {
     switch (command.getType()) {
       case INSERT: {
         Object param = method.convertArgsToSqlCommandParam(args);
-        result = rowCountResult(sqlSession.insert(command.getName(), param));
+        result = executeForManyrowCountResult(sqlSession.insert(command.getName(), param));
         break;
       }
       case UPDATE: {

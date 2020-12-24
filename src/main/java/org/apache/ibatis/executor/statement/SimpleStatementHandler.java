@@ -34,6 +34,8 @@ import org.apache.ibatis.session.RowBounds;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201223
  */
 public class SimpleStatementHandler extends BaseStatementHandler {
 

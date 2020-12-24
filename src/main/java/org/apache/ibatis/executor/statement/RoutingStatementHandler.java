@@ -16,7 +16,7 @@ import org.apache.ibatis.session.RowBounds;
 
 /**
  * @author Clinton Begin
- * @author wangheng
+ * @author kit
  * @date 2019/10/14
  */
 public class RoutingStatementHandler implements StatementHandler {

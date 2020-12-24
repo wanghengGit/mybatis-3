@@ -1,17 +1,17 @@
 /**
- *    Copyright 2009-2019 the original author or authors.
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    You may obtain a copy of the License at
- *
- *       http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Copyright 2009-2019 the original author or authors.
+ * <p>
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * <p>
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * <p>
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 package org.apache.ibatis.binding;
 
@@ -29,22 +29,18 @@ import org.apache.ibatis.session.SqlSession;
 /**
  * @author Clinton Begin
  * @author Eduardo Macarron
-<<<<<<< HEAD
- * @date 20200410
+ * @author kit
+ * @date 20200905
  * 在mybatis中，通过MapperProxy动态代理咱们的dao， 也就是说，
  * 当咱们执行自己写的dao里面的方法的时候，其实是对应的mapperProxy在代理。
  * 那么，咱们就看看怎么获取MapperProxy对象吧
-=======
- * @author kit
- * @date 20200905
  * 代理模式，Mybatis实现的核心，比如MapperProxy、ConnectionLogger，用的jdk的动态代理
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  */
 public class MapperProxy<T> implements InvocationHandler, Serializable {
 
   private static final long serialVersionUID = -6424540398559729838L;
   private static final int ALLOWED_MODES = MethodHandles.Lookup.PRIVATE | MethodHandles.Lookup.PROTECTED
-      | MethodHandles.Lookup.PACKAGE | MethodHandles.Lookup.PUBLIC;
+    | MethodHandles.Lookup.PACKAGE | MethodHandles.Lookup.PUBLIC;
   private static Constructor<Lookup> lookupConstructor;
   private final SqlSession sqlSession;
   private final Class<T> mapperInterface;
@@ -99,7 +95,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
   }
 
   private Object invokeDefaultMethod(Object proxy, Method method, Object[] args)
-      throws Throwable {
+    throws Throwable {
     final Class<?> declaringClass = method.getDeclaringClass();
     final Lookup lookup;
     if (lookupConstructor.getParameterCount() == 2) {

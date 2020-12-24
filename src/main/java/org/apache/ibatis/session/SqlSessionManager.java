@@ -33,7 +33,7 @@ import org.apache.ibatis.reflection.ExceptionUtil;
  * @author Larry Meadors
  * @author kit
  * @date 20200713
- * 单例模式
+ * 工厂模式
  */
 public class SqlSessionManager implements SqlSessionFactory, SqlSession {
 

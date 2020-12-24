@@ -20,6 +20,8 @@ import java.util.Properties;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * @author kit
+ * @date 20201224
  */
 public class PropertyParser {
 

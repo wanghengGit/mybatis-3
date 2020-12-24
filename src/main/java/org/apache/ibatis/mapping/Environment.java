@@ -6,7 +6,7 @@ import org.apache.ibatis.transaction.TransactionFactory;
 
 /**
  * @author Clinton Begin
- * @author wangheng
+ * @author kit
  * @date 2019/10/09
  */
 public final class Environment {

@@ -12,13 +12,9 @@ import org.apache.ibatis.session.ResultHandler;
 
 /**
  * @author Clinton Begin
-<<<<<<< HEAD
- * @date 2019/10/14
  * StatementHandler是真正访问数据库的地方，并调用ResultSetHandler处理查询结果
-=======
  * @date 20200713
  * 封装了对jdbc statement的操作
->>>>>>> 09f58344bc35698fde892c59c75df84049fbbcdc
  */
 public interface StatementHandler {
 
