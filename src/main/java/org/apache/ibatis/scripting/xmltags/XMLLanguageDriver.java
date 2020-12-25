@@ -47,6 +47,7 @@ public class XMLLanguageDriver implements LanguageDriver {
    * @param script XNode parsed from a XML file
    * @param parameterType input parameter type got from a mapper method or specified in the parameterType xml attribute. Can be null.
    * @return
+   * 其内部是通过 XMLScriptBuilder.parseScriptNode() 方法 来进行创建 SqlSource
    */
   @Override
   public SqlSource createSqlSource(Configuration configuration, XNode script, Class<?> parameterType) {

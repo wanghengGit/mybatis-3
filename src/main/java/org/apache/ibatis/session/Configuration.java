@@ -86,7 +86,10 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
  * @author kit
  * 用于描述mybatis的主配置信息
  * Configuration是MyBatis中相当重要的一个类，
- * 如果理解了其中的所有参数的意义，不仅清楚地知道MyBatis提供的所有配置项，还理解了MyBatis的内部核心运行原理
+ * 如果理解了其中的所有参数的意义，不仅清楚地知道MyBatis提供的所有配置项，
+ * 还理解了MyBatis的内部核心运行原理
+ *
+ * Configuration 维护了一个 MapperRegistry 对象，该对象主要作用就是加载Mapper接口和获取MapperProxy。
  */
 public class Configuration {
 
@@ -765,6 +768,13 @@ public class Configuration {
     mapperRegistry.addMapper(type);
   }
 
+  /**
+   * 委托 mapperRegistry.getMapper() 来获取MapperProxy
+   * @param type
+   * @param sqlSession
+   * @param <T>
+   * @return
+   */
   public <T> T getMapper(Class<T> type, SqlSession sqlSession) {
     return mapperRegistry.getMapper(type, sqlSession);
   }
@@ -939,11 +949,14 @@ public class Configuration {
       if (key.contains(".")) {
         final String shortKey = getShortName(key);
         if (super.get(shortKey) == null) {
+          // 存简称 key
           super.put(shortKey, value);
         } else {
+          // 重复的 key 时存的value 为  Ambiguity ，在 get 时会判断  value 是否为 Ambiguity，是则抛异常
           super.put(shortKey, (V) new Ambiguity(shortKey));
         }
       }
+      // 存全称 key
       return super.put(key, value);
     }
 
@@ -953,6 +966,7 @@ public class Configuration {
       if (value == null) {
         throw new IllegalArgumentException(name + " does not contain value for " + key);
       }
+      // 判断类型是否为 Ambiguity
       if (value instanceof Ambiguity) {
         throw new IllegalArgumentException(((Ambiguity) value).getSubject() + " is ambiguous in " + name
             + " (try using the full name including the namespace, or rename one of the entries)");
@@ -971,7 +985,7 @@ public class Configuration {
         return subject;
       }
     }
-
+    // 截取最后一个"."符号后面的字符串做为shortName
     private String getShortName(String key) {
       final String[] keyParts = key.split("\\.");
       return keyParts[keyParts.length - 1];

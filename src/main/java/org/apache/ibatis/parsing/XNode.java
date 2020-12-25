@@ -28,6 +28,8 @@ import org.w3c.dom.NodeList;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201225
  */
 public class XNode {
 

@@ -37,8 +37,9 @@ import org.apache.ibatis.session.Configuration;
  * 表示动态生成的SQL语句以及相应的参数信息
  */
 public class BoundSql {
-
+  // 一个完整的sql，此时的sql 就是 JDBC 那种，即  select * from user where id = ?
   private final String sql;
+  // 参数列表
   private final List<ParameterMapping> parameterMappings;
   private final Object parameterObject;
   private final Map<String, Object> additionalParameters;

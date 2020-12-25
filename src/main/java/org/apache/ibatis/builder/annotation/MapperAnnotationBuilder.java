@@ -94,6 +94,8 @@ import org.apache.ibatis.type.UnknownTypeHandler;
 /**
  * @author Clinton Begin
  * @author Kazuki Shimizu
+ * @author kit
+ * @date 20201225
  */
 public class MapperAnnotationBuilder {
 

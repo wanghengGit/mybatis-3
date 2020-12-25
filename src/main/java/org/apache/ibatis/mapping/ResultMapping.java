@@ -27,6 +27,8 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201225
  */
 public class ResultMapping {
 

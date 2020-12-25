@@ -51,6 +51,8 @@ import org.apache.ibatis.type.TypeHandler;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201225
  */
 public class MapperBuilderAssistant extends BaseBuilder {
 

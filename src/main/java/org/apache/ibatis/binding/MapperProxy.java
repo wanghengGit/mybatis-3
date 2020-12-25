@@ -35,6 +35,9 @@ import org.apache.ibatis.session.SqlSession;
  * 当咱们执行自己写的dao里面的方法的时候，其实是对应的mapperProxy在代理。
  * 那么，咱们就看看怎么获取MapperProxy对象吧
  * 代理模式，Mybatis实现的核心，比如MapperProxy、ConnectionLogger，用的jdk的动态代理
+ *
+ *  MapperProxy 是 通过 MapperProxyFactory 创建的。
+ *  MapperProxy 实现 Mapper接口方法是委托 MapperMethod 执行的。
  */
 public class MapperProxy<T> implements InvocationHandler, Serializable {
 
@@ -42,6 +45,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
   private static final int ALLOWED_MODES = MethodHandles.Lookup.PRIVATE | MethodHandles.Lookup.PROTECTED
     | MethodHandles.Lookup.PACKAGE | MethodHandles.Lookup.PUBLIC;
   private static Constructor<Lookup> lookupConstructor;
+  // 注意： 这个 SqlSession 实际上是 SqlSessionTemplate
   private final SqlSession sqlSession;
   private final Class<T> mapperInterface;
   private final Map<Method, MapperMethod> methodCache;
@@ -77,6 +81,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     try {
+      // 如果调用的方法是 Object 种定义的方法，直接执行
       if (Object.class.equals(method.getDeclaringClass())) {
         return method.invoke(this, args);
       } else if (method.isDefault()) {
@@ -85,6 +90,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     } catch (Throwable t) {
       throw ExceptionUtil.unwrapThrowable(t);
     }
+    // 接口方法的调用都是通过 MapperMethod 来执行的
     final MapperMethod mapperMethod = cachedMapperMethod(method);
     //主要交给MapperMethod自己去管
     return mapperMethod.execute(sqlSession, args);

@@ -45,6 +45,8 @@ import org.apache.ibatis.session.SqlSession;
  * @author Kazuki Shimizu
  * @author kit
  * @date 20200410
+ *  MapperMethod 执行接口方法时是通过 SqlCommand 来判断要执行的具体 SQL节点，并且最终委托 SqlSession执行。
+ *   SqlCommand 内部的 信息是通过从 MappedStatement 中获取的。
  */
 public class MapperMethod {
 
@@ -56,10 +58,18 @@ public class MapperMethod {
     this.method = new MethodSignature(config, mapperInterface, method);
   }
 
+  /**
+   *  实际上都是调用 SqlSession的方法实现
+   * @param sqlSession
+   * @param args
+   * @return
+   */
   public Object execute(SqlSession sqlSession, Object[] args) {
     Object result;
+    // 判断 索要执行的方法类型
     switch (command.getType()) {
       case INSERT: {
+        // 参数转换
         Object param = method.convertArgsToSqlCommandParam(args);
         result = executeForManyrowCountResult(sqlSession.insert(command.getName(), param));
         break;
@@ -224,6 +234,7 @@ public class MapperMethod {
     private final SqlCommandType type;
 
     public SqlCommand(Configuration configuration, Class<?> mapperInterface, Method method) {
+      // 补全 方法的全名称路径 即 com.xxx.selectByName
       final String methodName = method.getName();
       final Class<?> declaringClass = method.getDeclaringClass();
       MappedStatement ms = resolveMappedStatement(mapperInterface, methodName, declaringClass,
@@ -237,7 +248,9 @@ public class MapperMethod {
               + mapperInterface.getName() + "." + methodName);
         }
       } else {
+        // 从 MappedStatement 中获取到方法名 (注意： 节点中的id属性包含命名空间)
         name = ms.getId();
+        // 从 MappedStatement 中获取到 方法的节点标签，即 select|insert|update|delete
         type = ms.getSqlCommandType();
         if (type == SqlCommandType.UNKNOWN) {
           throw new BindingException("Unknown execution method for: " + name);

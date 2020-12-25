@@ -35,7 +35,7 @@ import org.apache.ibatis.session.Configuration;
 
 /**
  * @author Clinton Begin
- * @author wangheng
+ * @author kit
  * @date 2019/10/14
  */
 public class XMLStatementBuilder extends BaseBuilder {
@@ -55,7 +55,11 @@ public class XMLStatementBuilder extends BaseBuilder {
     this.requiredDatabaseId = databaseId;
   }
 
+  /**
+   *  parseStatementNode() 方法是加载 select|insert|update|delete节点 信息的核心
+   */
   public void parseStatementNode() {
+    // 以下几个获取的配置信息，我们都应该很熟悉吧
     String id = context.getStringAttribute("id");
     String databaseId = context.getStringAttribute("databaseId");
 
@@ -71,12 +75,14 @@ public class XMLStatementBuilder extends BaseBuilder {
     boolean resultOrdered = context.getBooleanAttribute("resultOrdered", false);
 
     // Include Fragments before parsing
+    // 读取 <include> 信息
     XMLIncludeTransformer includeParser = new XMLIncludeTransformer(configuration, builderAssistant);
     includeParser.applyIncludes(context.getNode());
 
     String parameterType = context.getStringAttribute("parameterType");
     Class<?> parameterTypeClass = resolveClass(parameterType);
-
+// 将每个<select/>, <update/>,<insert/>,<delete/> 加载（通过 createSqlSource()方法）为一个 DynamicSqlSource (SqlSource 最常用子类 )：内部存在 getBoundSql() 方法
+// 会从XML文件读取的映射语句的内容 并封装成 BoundSql。
     String lang = context.getStringAttribute("lang");
     LanguageDriver langDriver = getLanguageDriver(lang);
 
@@ -111,7 +117,7 @@ public class XMLStatementBuilder extends BaseBuilder {
     String keyProperty = context.getStringAttribute("keyProperty");
     String keyColumn = context.getStringAttribute("keyColumn");
     String resultSets = context.getStringAttribute("resultSets");
-
+// 通过 MapperBuilderAssistant 的 addMappedStatement() 添加  MappedStatement 信息
     builderAssistant.addMappedStatement(id, sqlSource, statementType, sqlCommandType,
         fetchSize, timeout, parameterMap, parameterTypeClass, resultMap, resultTypeClass,
         resultSetTypeEnum, flushCache, useCache, resultOrdered,

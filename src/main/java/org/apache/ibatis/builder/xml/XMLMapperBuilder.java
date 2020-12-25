@@ -93,8 +93,12 @@ public class XMLMapperBuilder extends BaseBuilder {
     this.resource = resource;
   }
 
+  /**
+   * XMLConfigBuilder.parse() 主要用于解析mybatis-config.xml 配置文件的信息
+   */
   public void parse() {
     if (!configuration.isResourceLoaded(resource)) {
+      // 解析方法源头
       configurationElement(parser.evalNode("/mapper"));
       configuration.addLoadedResource(resource);
       bindMapperForNamespace();
@@ -109,27 +113,36 @@ public class XMLMapperBuilder extends BaseBuilder {
     return sqlFragments.get(refid);
   }
 
+  /**
+   * // 最核心解析方法
+   * @param context
+   */
   private void configurationElement(XNode context) {
     try {
+      // 我们都知道 Mapper 的  namespace 是与 Mapper接口路径对应的，所以进来需要判断下 namespace
       String namespace = context.getStringAttribute("namespace");
       if (namespace == null || namespace.equals("")) {
         throw new BuilderException("Mapper's namespace cannot be empty");
       }
+      // 为 MapperBuilderAssistant 设置 namespace
       builderAssistant.setCurrentNamespace(namespace);
       cacheRefElement(context.evalNode("cache-ref"));
       cacheElement(context.evalNode("cache"));
       parameterMapElement(context.evalNodes("/mapper/parameterMap"));
-      //处理<resultMap>这类标签，然后再MapperBuilderAssistant类的addResultMap()方法中
+      // 解析 resultMap 节点信息
+      // 处理<resultMap>这类标签，然后再MapperBuilderAssistant类的addResultMap()方法中
       // 把每个ResultMap对象加到Configuration对象中的resultMaps属性中（中间会把<resultMap>标签中的每一个子标签封装成ResultMapping对象，
       // 然后封装成ResultMap对象，最后put到Configuration对象中，id规则为：namespace+<resultMap>的id属性 ）
       resultMapElements(context.evalNodes("/mapper/resultMap"));
+      // 解析 sql 节点信息
       sqlElement(context.evalNodes("/mapper/sql"));
+      // 解析 select|insert|update|delete 节点信息
       buildStatementFromContext(context.evalNodes("select|insert|update|delete"));
     } catch (Exception e) {
       throw new BuilderException("Error parsing Mapper XML. The XML location is '" + resource + "'. Cause: " + e, e);
     }
   }
-
+  // 解析 select|insert|update|delete 节点信息
   private void buildStatementFromContext(List<XNode> list) {
     if (configuration.getDatabaseId() != null) {
       buildStatementFromContext(list, configuration.getDatabaseId());
@@ -139,8 +152,10 @@ public class XMLMapperBuilder extends BaseBuilder {
 
   private void buildStatementFromContext(List<XNode> list, String requiredDatabaseId) {
     for (XNode context : list) {
+      // 创建 XMLStatementBuilder
       final XMLStatementBuilder statementParser = new XMLStatementBuilder(configuration, builderAssistant, context, requiredDatabaseId);
       try {
+        // 通过 XMLStatementBuilder的 parseStatementNode() 方法进行加载。
         statementParser.parseStatementNode();
       } catch (IncompleteElementException e) {
         configuration.addIncompleteStatement(statementParser);
@@ -245,7 +260,7 @@ public class XMLMapperBuilder extends BaseBuilder {
       builderAssistant.addParameterMap(id, parameterClass, parameterMappings);
     }
   }
-
+  // 解析 resultMap 节点信息
   private void resultMapElements(List<XNode> list) throws Exception {
     for (XNode resultMapNode : list) {
       try {
