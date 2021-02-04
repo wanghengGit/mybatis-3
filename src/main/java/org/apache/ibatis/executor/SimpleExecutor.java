@@ -34,6 +34,7 @@ import org.apache.ibatis.transaction.Transaction;
 /**
  * @author Clinton Begin
  * @date 20200403
+ * @author kit
  */
 public class SimpleExecutor extends BaseExecutor {
 
@@ -58,8 +59,11 @@ public class SimpleExecutor extends BaseExecutor {
   public <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
     Statement stmt = null;
     try {
+      // 从  MappedStatement 中获取到 Configuration
       Configuration configuration = ms.getConfiguration();
+      // 通过 Configuration 的 newStatementHandler() 方法创建了一个 StatementHandler 对象
       StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);
+      // 调用 prepareStatement() 方法 获取到 Statement 对象 （真正执行静态SQl的接口）
       stmt = prepareStatement(handler, ms.getStatementLog());
       //StatementHandler封装了Statement, 让 StatementHandler 去处理
       return handler.query(stmt, resultHandler);
@@ -82,10 +86,22 @@ public class SimpleExecutor extends BaseExecutor {
     return Collections.emptyList();
   }
 
+  /**
+   * 整个流程分3个步骤：
+   *
+   * 1、 创建 Connection 链接，查看源码其是通过 transaction.getConnection() 获取到的。
+   *
+   * 2、 预编译获取到 PrepareStatement ,即 最终会调用到 connection.prepareStatement() 方法
+   *
+   * 3、 设置参数信息，其参数是通过 从 BoundSql 获取
+   */
   private Statement prepareStatement(StatementHandler handler, Log statementLog) throws SQLException {
     Statement stmt;
+    // 创建 Connection 链接，查看源码其是通过 transaction.getConnection() 获取到的。
     Connection connection = getConnection(statementLog);
+    // 预编译获取到 PrepareStatement ,即 最终会调用到 connection.prepareStatement() 方法
     stmt = handler.prepare(connection, transaction.getTimeout());
+    // 设置参数信息，其参数是通过 从 BoundSql 获取
     handler.parameterize(stmt);
     return stmt;
   }

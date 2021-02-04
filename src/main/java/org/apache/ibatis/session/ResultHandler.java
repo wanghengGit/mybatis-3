@@ -17,6 +17,8 @@ package org.apache.ibatis.session;
 
 /**
  * @author Clinton Begin
+ * @author kit
+ * @date 20201225
  */
 public interface ResultHandler<T> {
 

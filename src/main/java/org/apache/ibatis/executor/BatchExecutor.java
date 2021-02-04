@@ -37,6 +37,8 @@ import org.apache.ibatis.transaction.Transaction;
 
 /**
  * @author Jeff Butler
+ * @author kit
+ * @date 20201225
  */
 public class BatchExecutor extends BaseExecutor {
 
@@ -78,6 +80,15 @@ public class BatchExecutor extends BaseExecutor {
     return BATCH_UPDATE_RETURN_VALUE;
   }
 
+  /**
+   * 1、 从 MappedStatement 中获取到 Configuration
+   *
+   * 2、 通过 Configuration 的 newStatementHandler() 方法创建了一个 StatementHandler 对象
+   *
+   * 3、 调用 prepareStatement() 方法 获取到 Statement 对象 （真正执行静态SQl的接口）
+   *
+   * 4、 调用 StatementHandler.query() 方法执行（其实内部委托 Statement 来执行的）
+   */
   @Override
   public <E> List<E> doQuery(MappedStatement ms, Object parameterObject, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql)
       throws SQLException {

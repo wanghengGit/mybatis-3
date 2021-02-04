@@ -37,6 +37,9 @@ import org.apache.ibatis.transaction.managed.ManagedTransactionFactory;
  * （2）当我们获取到SqlSessionFactory之后，就可以通过SqlSessionFactory去获取SqlSession对象
  * @author kit
  * @date 20200809
+ * 在学习Mybatis时，我们常常看到的 SqlSession 创建方式是 SqlSessionFactory.openSession() ，
+ * 那么我们就拿此作为切入点，先来看看 SqlSessionFactory.openSession() 的方法源码（注意 是 DefaultSqlSessionFactory ），
+ * 其内部是调用 openSessionFromDataSource() 方法
  */
 public class DefaultSqlSessionFactory implements SqlSessionFactory {
 
@@ -91,6 +94,13 @@ public class DefaultSqlSessionFactory implements SqlSessionFactory {
     return configuration;
   }
 
+  /**
+   *
+   * @param execType
+   * @param level
+   * @param autoCommit
+   * @return
+   */
   private SqlSession openSessionFromDataSource(ExecutorType execType, TransactionIsolationLevel level, boolean autoCommit) {
     Transaction tx = null;
     try {

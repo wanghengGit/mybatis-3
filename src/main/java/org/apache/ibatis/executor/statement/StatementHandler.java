@@ -14,6 +14,7 @@ import org.apache.ibatis.session.ResultHandler;
  * @author Clinton Begin
  * StatementHandler是真正访问数据库的地方，并调用ResultSetHandler处理查询结果
  * @date 20200713
+ * @author kit
  * 封装了对jdbc statement的操作
  */
 public interface StatementHandler {

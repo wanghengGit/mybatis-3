@@ -71,7 +71,8 @@ public class MapperMethod {
       case INSERT: {
         // 参数转换
         Object param = method.convertArgsToSqlCommandParam(args);
-        result = executeForManyrowCountResult(sqlSession.insert(command.getName(), param));
+//        result = executeForManyrowCountResult(sqlSession.insert(command.getName(), param));
+        result = "";
         break;
       }
       case UPDATE: {

@@ -46,6 +46,11 @@ import org.apache.ibatis.session.SqlSession;
  * @author Clinton Begin
  * @author kit
  * @date 2020819
+ *   我们可以发现 DefaultSqlSession 的所有方法 基本上都有以下2个步骤：
+ *
+ * 1、 从 configuration 中获取到 指定方法的 MappedStatement
+ *
+ * 2、 通过 委托 Executor 来 执行真正的数据库操作
  */
 public class DefaultSqlSession implements SqlSession {
 
@@ -145,6 +150,8 @@ public class DefaultSqlSession implements SqlSession {
   @Override
   public <E> List<E> selectList(String statement, Object parameter, RowBounds rowBounds) {
     try {
+      // 从 configuration 中获取到 指定方法的 MappedStatement （注意：statement 是由 MapperMethod 中的 SqlCommand 的 name 字段传下来的，
+      // 而name 本身就来源于 MappedStatement 的 id ，所以最终  statement 会是 com.xxx.findUserByName 这种形式）
       MappedStatement ms = configuration.getMappedStatement(statement);
       //CRUD实际上是交给Excetor去处理， excutor其实也只是穿了个马甲而已
       return executor.query(ms, wrapCollection(parameter), rowBounds, Executor.NO_RESULT_HANDLER);
